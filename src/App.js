@@ -21,7 +21,7 @@ const App = () => {
     setSimilarItems([]);
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/search/`, {
+      const response = await axios.get(`https://kurtisz18.github.io/api/search/`, {
         params: { 
           q: query,
           type: type
