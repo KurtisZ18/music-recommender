@@ -29,9 +29,6 @@ STATIC_URL = '/static/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(f+)4dz*zg7y2n&=4%gprum3mywyd##r&n+xfy4vz8@mnjl9$q'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
