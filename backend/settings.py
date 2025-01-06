@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "https://kurtisz18.github.io",
+    "https://kurtisz18.github.io/music-recommender",
 ]
 
 MIDDLEWARE = [
