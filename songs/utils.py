@@ -85,7 +85,7 @@ class LastFMClient:
             logger.error(f"Error in search_artist: {str(e)}")
             return {}
     
-    def get_similar_artists(self, artist: str, limit: int = 10) -> List[Dict]:
+    def get_similar_artists(self, artist: str, limit: int = 12) -> List[Dict]:
         try:
             result = self._make_request('artist.getSimilar', {
                 'artist': artist,
