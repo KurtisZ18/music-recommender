@@ -18,6 +18,7 @@
   }
   
   .search-type {
+    margin: auto;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -25,8 +26,9 @@
   }
   
   .search-button {
+    margin: auto;
     padding: 8px 16px;
-    background-color: #1db954;
+    background-color: red;
     color: white;
     border: none;
     border-radius: 4px;
@@ -35,5 +37,5 @@
   }
   
   .search-button:hover {
-    background-color: #1ed760;
+    background-color: darkred;
   }

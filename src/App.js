@@ -14,10 +14,8 @@ const App = () => {
   const [error, setError] = useState('');
   const [searchType, setSearchType] = useState('track');
 
-  const API_BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://music-recommender-7bpc.onrender.com"
-    : "http://127.0.0.1:8000";
+  /*if developing locally set to "http://127.0.0.1:8000"; */
+  const API_BASE_URL = "https://music-recommender-7bpc.onrender.com";
 
   const fetchData = async (query, type) => {
     setLoading(true);
