@@ -13,10 +13,10 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [searchType, setSearchType] = useState('track');
-  
+
   const API_BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://kurtisz18.github.io/music-recommender"
+    ? "https://music-recommender-7bpc.onrender.com"
     : "http://127.0.0.1:8000";
 
   const fetchData = async (query, type) => {
