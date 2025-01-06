@@ -1,39 +1,79 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import SongInput from './components/SongInput';
+import SearchInput from './components/SearchInput';
 import SongList from './components/SongList';
+import ArtistList from './components/ArtistList';
 import LoadingSpinner from './components/LoadingSpinner';
 import ErrorMessage from './components/ErrorMessage';
+import axios from 'axios';
 
 const App = () => {
-  const [songs, setSongs] = useState([]);
+  const [searchedItem, setSearchedItem] = useState(null);
+  const [similarItems, setSimilarItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [searchType, setSearchType] = useState('track');
 
-  const fetchSongs = (songName) => {
+  const fetchData = async (query, type) => {
     setLoading(true);
     setError('');
-    
-    // Simulate fetching data from an API
-    setTimeout(() => {
-      if (songName === 'test') {
-        setSongs(['Similar Song 1', 'Similar Song 2', 'Similar Song 3']);
-        setLoading(false);
-      } else {
-        setError('No similar songs found!');
-        setLoading(false);
+    setSearchedItem(null);
+    setSimilarItems([]);
+
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/search/`, {
+        params: { 
+          q: query,
+          type: type
+        },
+      });
+
+      if (response.data.error) {
+        setError(response.data.error);
+        return;
       }
-    }, 2000);
+
+      if (type === 'track') {
+        setSearchedItem(response.data.track);
+        setSimilarItems(response.data.similar_tracks || []);
+      } else {
+        setSearchedItem(response.data.artist);
+        setSimilarItems(response.data.similar_artists || []);
+      }
+      setSearchType(type);
+    } catch (err) {
+      console.error('Error searching:', err);
+      setError(
+        err.response?.data?.error ||
+        err.response?.data?.details ||
+        `Error fetching ${type} data.`
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div>
+    <div className="app">
       <Header />
-      <SongInput onSearch={fetchSongs} />
-      
-      {loading && <LoadingSpinner />}
-      {error && <ErrorMessage message={error} />}
-      <SongList songs={songs} />
+      <main className="container">
+        <SearchInput onSearch={fetchData} />
+        {loading && <LoadingSpinner />}
+        {error && <ErrorMessage message={error} />}
+        {(searchedItem || similarItems.length > 0) && (
+          searchType === 'track' ? (
+            <SongList 
+              searchedTrack={searchedItem} 
+              similarTracks={similarItems}
+            />
+          ) : (
+            <ArtistList 
+              searchedArtist={searchedItem} 
+              similarArtists={similarItems}
+            />
+          )
+        )}
+      </main>
     </div>
   );
 };

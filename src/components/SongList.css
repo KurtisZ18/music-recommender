@@ -1,0 +1,78 @@
+.song-list-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-song {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border: 1px solid #eee;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featured-song:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.featured-song h2 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.featured-song-info p {
+  margin: 8px 0;
+  color: #333;
+}
+
+.similar-tracks-title {
+  margin: 30px 0 20px 0;
+}
+
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.song-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.song-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.song-card h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.song-card p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.last-fm-link {
+  display: inline-block;
+  color: #d51007;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.last-fm-link:hover {
+  color: #b31006;
+  text-decoration: underline;
+}
