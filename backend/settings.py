@@ -12,11 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
-from decouple import config
 import os
 
 load_dotenv()
 
+SECRET_KEY = os.getenv('SECRET_KEY')
 LASTFM_API_KEY = os.getenv('LASTFM_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
