@@ -13,6 +13,11 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [searchType, setSearchType] = useState('track');
+  
+  const API_BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://kurtisz18.github.io/music-recommender"
+    : "http://127.0.0.1:8000";
 
   const fetchData = async (query, type) => {
     setLoading(true);
@@ -21,7 +26,7 @@ const App = () => {
     setSimilarItems([]);
 
     try {
-      const response = await axios.get(`https://kurtisz18.github.io/music-recommender/api/search/`, {
+      const response = await axios.get(`${API_BASE_URL}/api/search/`, {
         params: { 
           q: query,
           type: type
